@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import header from '../../images/header.png';
 import logo from '../../images/icons/logo.png';
+import useAuth from '../../hooks/useContext';
 
 const Header = () => {
+    const { user } = useAuth();
+   
     return (
         <div style={{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${header})` }} className="header">
             <nav className="nav">
                 <ul>
                     <li>
-                        <img className="logo" src={logo} alt=""/>
+                        <img className="logo" src={logo} alt="" />
                     </li>
                     <li>
                         <Link to="/home">Home</Link>
@@ -20,7 +23,9 @@ const Header = () => {
                     </li>
                     <li>
                         <Link className="btn-book" to="/book">Book</Link>
-                    </li>
+                    </li> 
+                    <li style={{color: 'white'}}>{user.name}</li>
+                    
                 </ul>
             </nav>
             <div className="title-container">
